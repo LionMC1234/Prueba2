@@ -5,64 +5,101 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 224 71.4% 4.1%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 224 71.4% 4.1%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 224 71.4% 4.1%;
 
-    --primary: 322 78% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 283 67.1% 50.2%;
+    --primary-foreground: 210 20% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
 
-    --accent: 37 87% 57%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 322 78% 53%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 283 67.1% 50.2%;
 
     --radius: 0.75rem;
+
+    /* Colores personalizados - NEKOTINA */
+    --neko-pink-50: 329 100% 97.6%;
+    --neko-pink-100: 330 100% 94.5%;
+    --neko-pink-200: 330 100% 86.9%;
+    --neko-pink-300: 329 94.1% 76.7%;
+    --neko-pink-400: 329 85.7% 70.4%;
+    --neko-pink-500: 329 85.5% 65.1%;
+    --neko-pink-600: 328 76% 51%;
+    --neko-pink-700: 329 75.9% 42.2%;
+    --neko-pink-800: 329 75.9% 34.5%;
+    --neko-pink-900: 328 75.9% 30.4%;
+    --neko-pink-950: 328 87.5% 14.9%;
+
+    --neko-amber-50: 41 100% 94.7%;
+    --neko-amber-100: 39 96.3% 87.8%;
+    --neko-amber-200: 40 96.8% 77.5%;
+    --neko-amber-300: 39 95.5% 63.7%;
+    --neko-amber-400: 38 95.1% 55.5%;
+    --neko-amber-500: 37 94.1% 51%;
+    --neko-amber-600: 36 78.1% 45.9%;
+    --neko-amber-700: 35 78.7% 38.2%;
+    --neko-amber-800: 34 79.4% 32.4%;
+    --neko-amber-900: 32 80% 28%;
+    --neko-amber-950: 25 88.2% 14.5%;
+
+    --neko-dark-50: 240 14.3% 95.9%;
+    --neko-dark-100: 240 10% 94.1%;
+    --neko-dark-200: 240 6.7% 87.8%;
+    --neko-dark-300: 240 5.3% 75.9%;
+    --neko-dark-400: 240 5.5% 64.9%;
+    --neko-dark-500: 240 4.3% 53.9%;
+    --neko-dark-600: 240 4.9% 40%;
+    --neko-dark-700: 240 6.7% 30.6%;
+    --neko-dark-800: 240 11.8% 23.1%;
+    --neko-dark-900: 240 20% 17.5%;
+    --neko-dark-950: 240 35.3% 7.8%;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 240 21.4% 10.2%;
+    --foreground: 210 20% 98%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 21.4% 12.2%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 21.4% 12.2%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 322 78% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 283 67.1% 50.2%;
+    --primary-foreground: 210 20% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
 
-    --accent: 37 87% 57%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 322 78% 53%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 283 67.1% 60.2%;
   }
 }
 
@@ -71,45 +108,71 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Animaciones y efectos personalizados */
+@layer utilities {
+  /* Efectos de hover */
+  .hover-scale {
+    @apply transition-transform duration-300;
   }
 
-  /* Animaciones */
-  .animate-gradient {
-    background-size: 400% 400%;
-    animation: gradient 8s ease infinite;
+  .hover-scale:hover {
+    @apply transform scale-105;
   }
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  .hover-lift {
+    @apply transition-all duration-300 relative;
   }
 
-  /* Efecto de bordes con brillo */
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  /* Degradados */
+  .bg-gradient-neko {
+    @apply bg-gradient-to-r from-neko-pink-600 to-neko-pink-800;
+  }
+
+  .bg-gradient-neko-light {
+    @apply bg-gradient-to-r from-neko-pink-400 to-neko-pink-600;
+  }
+
+  .bg-gradient-neko-amber {
+    @apply bg-gradient-to-r from-neko-pink-600 to-neko-amber-600;
+  }
+
+  /* Efectos de borde brillante */
   .glow-border {
-    position: relative;
-    overflow: hidden;
+    @apply relative overflow-hidden;
   }
 
   .glow-border::before {
     content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    background: linear-gradient(45deg, #c44ba0, #dca445, #c44ba0);
+    @apply absolute -inset-[1px] bg-gradient-to-r from-neko-pink-600 via-neko-amber-600 to-neko-pink-600 rounded-[inherit] opacity-70 blur-[2px] transition-opacity duration-300;
     background-size: 200% 200%;
-    animation: glowingBorder 3s ease infinite;
-    border-radius: inherit;
+    animation: glowingBorder 3s linear infinite;
     z-index: -1;
+  }
+
+  .glow-border:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Sombras especiales */
+  .shadow-neko {
+    @apply shadow-[0_10px_25px_-5px_rgba(196,75,160,0.2)];
+  }
+
+  .shadow-neko-strong {
+    @apply shadow-[0_15px_35px_-10px_rgba(196,75,160,0.35)];
+  }
+
+  /* Animaciones */
+  .animate-blob {
+    animation: blob 7s infinite;
   }
 
   @keyframes glowingBorder {
@@ -124,34 +187,27 @@
     }
   }
 
-  /* Efectos de hover */
-  .hover-scale {
-    transition: transform 0.3s ease;
+  @keyframes blob {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    33% {
+      transform: translateY(-10px) scale(1.05);
+    }
+    66% {
+      transform: translateY(5px) scale(0.95);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
   }
 
-  .hover-scale:hover {
-    transform: scale(1.05);
+  /* Texto con gradiente */
+  .text-gradient-neko {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-neko-pink-600 to-neko-pink-800;
   }
 
-  /* Degradados para fondos */
-  .bg-gradient-nekotina {
-    background: linear-gradient(125deg, #c44ba0 0%, #9b3574 100%);
-  }
-
-  .bg-gradient-nekotina-light {
-    background: linear-gradient(125deg, #f37dc3 0%, #e061a6 100%);
-  }
-
-  .bg-gradient-nekotina-amber {
-    background: linear-gradient(125deg, #c44ba0 0%, #dca445 100%);
-  }
-
-  /* Sombras especiales */
-  .shadow-nekotina {
-    box-shadow: 0 10px 25px -5px rgba(196, 75, 160, 0.2);
-  }
-
-  .shadow-nekotina-strong {
-    box-shadow: 0 15px 35px -10px rgba(196, 75, 160, 0.35);
+  .text-gradient-neko-amber {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-neko-pink-600 to-neko-amber-600;
   }
 }

@@ -1,34 +1,27 @@
-# Tareas del Proyecto
+# Tareas para el Desarrollo del Portal de Modelo de Lenguaje
 
-## Configuración inicial
-- [x] Crear proyecto Next.js con shadcn/ui
-- [x] Instalar dependencias necesarias (MongoDB, autenticación, etc.)
-- [x] Configurar conexión a MongoDB
+## Componentes Fundamentales
+- [x] Crear un componente de navegación moderno con modo oscuro
+- [x] Implementar Hero section con animaciones
+- [x] Construir sección de características principales
+- [x] Desarrollar sección de membresías/planes
+- [x] Crear footer moderno y responsivo
 
-## Estructura de datos
-- [x] Crear modelo de usuario con los campos requeridos
-- [x] Implementar validaciones
+## Funcionalidades
+- [x] Implementar toggle de tema claro/oscuro
+- [x] Añadir animaciones en scroll
+- [x] Incluir efectos de hover interactivos
+- [x] Implementar transiciones suaves entre secciones
+- [x] Añadir efectos parallax en elementos decorativos
 
-## API y rutas de autenticación
-- [x] Crear endpoint para registro de usuarios
-- [x] Crear endpoint para inicio de sesión
-- [x] Implementar middleware de autenticación
+## Optimizaciones
+- [in_progress] Asegurar diseño completamente responsivo
+- [in_progress] Optimizar rendimiento
+- [in_progress] Mejorar accesibilidad
+- [x] Configurar SEO básico
 
-## Interfaz de usuario
-- [x] Crear componentes de autenticación (forms)
-- [x] Diseñar página de inicio moderna y minimalista
-- [x] Implementar navbar interactiva
-- [x] Crear página de dashboard para usuarios autenticados
-
-## Pendientes
-- [ ] Implementar gestión de membresías
-- [ ] Añadir funcionalidad para actualizar perfil de usuario
-- [ ] Mejorar validaciones y mensajes de error
-- [ ] Implementar cierre de sesión automático por inactividad
-- [ ] Optimizar para dispositivos móviles
-
-## Mejoras futuras
-- [ ] Añadir modo oscuro
-- [ ] Implementar notificaciones en tiempo real
-- [ ] Añadir estadísticas avanzadas según nivel de membresía
-- [ ] Mejorar la seguridad con doble factor de autenticación
+## Progreso del Diseño
+- [x] Configuración de colores y tema inspirados en Nekotina
+- [x] Configuración del proyecto con Next.js y ShadCN UI
+- [x] Implementación base del sistema de tema claro/oscuro
+- [in_progress] Fase de pruebas y ajustes
