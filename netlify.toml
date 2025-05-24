@@ -3,11 +3,10 @@
 
 [build]
   command = "bun run build"
-  publish = "out"
+  publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "20"
-  TZ = "UTC"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
