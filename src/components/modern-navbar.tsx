@@ -104,7 +104,9 @@ export function ModernNavbar() {
     <motion.header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "glass-nav shadow-modern-lg" : "bg-transparent"
+        isScrolled
+          ? "bg-background/95 backdrop-blur-xl shadow-modern-lg border-b border-border/50"
+          : "bg-background/90 backdrop-blur-md border-b border-border/30"
       )}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -120,12 +122,12 @@ export function ModernNavbar() {
               whileTap={{ scale: 0.95 }}
             >
               <div className="absolute inset-0 gradient-primary rounded-xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-              <div className="relative gradient-primary p-2 rounded-xl">
-                <Bot className="h-6 w-6 text-white" />
+              <div className="relative gradient-primary p-2 rounded-xl button-bounce">
+                <Bot className="h-6 w-6 text-white icon-hover" />
               </div>
             </motion.div>
             <div className="flex flex-col">
-              <span className="gradient-text text-xl font-bold">Aira</span>
+              <span className="gradient-text text-xl font-bold hover:scale-105 transition-transform duration-200">Aira</span>
               <span className="text-xs text-muted-foreground">AI Assistant</span>
             </div>
           </Link>
@@ -134,12 +136,12 @@ export function ModernNavbar() {
           <div className="hidden md:flex items-center space-x-1">
             <NavigationMenu>
               <NavigationMenuList>
-                {navigationItems.map((item) => (
+                {navigationItems.map((item, index) => (
                   <NavigationMenuItem key={item.title}>
                     {item.items ? (
                       <>
-                        <NavigationMenuTrigger className="bg-transparent hover:bg-accent/50 text-foreground">
-                          <item.icon className="w-4 h-4 mr-2" />
+                        <NavigationMenuTrigger className="bg-transparent hover:bg-accent/50 text-foreground hover-lift transition-all duration-200">
+                          <item.icon className="w-4 h-4 mr-2 icon-hover" />
                           {item.title}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
@@ -149,6 +151,7 @@ export function ModernNavbar() {
                                 key={subItem.title}
                                 title={subItem.title}
                                 href={subItem.href}
+                                className="hover-lift"
                               >
                                 {subItem.description}
                               </ListItem>
@@ -157,12 +160,12 @@ export function ModernNavbar() {
                         </NavigationMenuContent>
                       </>
                     ) : (
-                      <Link href={item.href} legacyBehavior passHref>
-                        <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                          <item.icon className="w-4 h-4 mr-2" />
+                      <NavigationMenuLink asChild>
+                        <Link href={item.href} className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 hover-lift">
+                          <item.icon className="w-4 h-4 mr-2 icon-hover" />
                           {item.title}
-                        </NavigationMenuLink>
-                      </Link>
+                        </Link>
+                      </NavigationMenuLink>
                     )}
                   </NavigationMenuItem>
                 ))}
@@ -172,37 +175,45 @@ export function ModernNavbar() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-              className="rounded-full"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-
-            <Link href="/login">
-              <Button variant="ghost" className="rounded-full">
-                Iniciar Sesión
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                className="rounded-full hover-lift button-bounce"
+              >
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
               </Button>
-            </Link>
+            </motion.div>
 
-            <Link href="/register">
-              <Button className="gradient-primary text-white rounded-full button-modern hover-glow">
-                Comenzar Gratis
-              </Button>
-            </Link>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Link href="/login">
+                <Button variant="ghost" className="rounded-full hover-lift button-bounce">
+                  Iniciar Sesión
+                </Button>
+              </Link>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Link href="/register">
+                <Button className="gradient-primary text-white rounded-full button-modern hover-glow pulse-glow">
+                  Comenzar Gratis
+                </Button>
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon" className="rounded-full">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="ghost" size="icon" className="rounded-full button-bounce">
+                  <Menu className="h-5 w-5 icon-hover" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </motion.div>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <nav className="flex flex-col space-y-4">
@@ -217,7 +228,7 @@ export function ModernNavbar() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                    className="rounded-full"
+                    className="rounded-full button-bounce"
                   >
                     <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                     <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -229,10 +240,10 @@ export function ModernNavbar() {
                     <div key={item.title}>
                       <Link
                         href={item.href}
-                        className="flex items-center space-x-2 p-3 rounded-lg hover:bg-accent transition-colors"
+                        className="flex items-center space-x-2 p-3 rounded-lg hover:bg-accent transition-colors hover-lift"
                         onClick={() => setIsOpen(false)}
                       >
-                        <item.icon className="h-5 w-5" />
+                        <item.icon className="h-5 w-5 icon-hover" />
                         <span className="font-medium">{item.title}</span>
                       </Link>
                       {item.items && (
@@ -241,7 +252,7 @@ export function ModernNavbar() {
                             <Link
                               key={subItem.title}
                               href={subItem.href}
-                              className="block p-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                              className="block p-2 text-sm text-muted-foreground hover:text-foreground transition-colors hover-lift"
                               onClick={() => setIsOpen(false)}
                             >
                               {subItem.title}
@@ -255,12 +266,12 @@ export function ModernNavbar() {
 
                 <div className="space-y-2 pt-4 border-t">
                   <Link href="/login" onClick={() => setIsOpen(false)}>
-                    <Button variant="ghost" className="w-full justify-start rounded-full">
+                    <Button variant="ghost" className="w-full justify-start rounded-full hover-lift button-bounce">
                       Iniciar Sesión
                     </Button>
                   </Link>
                   <Link href="/register" onClick={() => setIsOpen(false)}>
-                    <Button className="w-full gradient-primary text-white rounded-full">
+                    <Button className="w-full gradient-primary text-white rounded-full button-modern">
                       Comenzar Gratis
                     </Button>
                   </Link>

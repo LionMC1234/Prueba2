@@ -38,7 +38,7 @@ export function HeroSection() {
           }}
           transition={{
             duration: 20,
-            repeat: Infinity,
+            repeat: Number.POSITIVE_INFINITY,
             ease: "linear",
           }}
         />
@@ -50,7 +50,7 @@ export function HeroSection() {
           }}
           transition={{
             duration: 25,
-            repeat: Infinity,
+            repeat: Number.POSITIVE_INFINITY,
             ease: "linear",
           }}
         />
@@ -67,31 +67,32 @@ export function HeroSection() {
           transition={{ delay: element.delay, duration: 0.8 }}
         >
           <motion.div
-            className="glass-card p-3 shadow-glow"
+            className="glass-card p-3 shadow-glow hover-lift cursor-pointer"
             animate={{ y: [-10, 10, -10] }}
             transition={{
               duration: 3,
-              repeat: Infinity,
+              repeat: Number.POSITIVE_INFINITY,
               delay: element.delay,
             }}
+            whileHover={{ scale: 1.1, rotate: 5 }}
           >
-            <element.icon className="w-6 h-6 text-primary" />
+            <element.icon className="w-6 h-6 text-primary icon-hover" />
           </motion.div>
         </motion.div>
       ))}
 
       {/* Main Content */}
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 pt-32">
         <div className="text-center max-w-5xl mx-auto">
           {/* Main Heading */}
           <motion.h1
-            className="text-6xl md:text-8xl font-bold mb-6 text-balance leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance leading-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             El futuro de la{" "}
-            <span className="gradient-text">conversación</span>
+            <span className="gradient-text hover:scale-105 transition-transform duration-300 inline-block cursor-pointer">conversación</span>
             <br />
             <span className="relative">
               inteligente
@@ -106,7 +107,7 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance"
+            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -121,22 +122,26 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <Button
-              size="lg"
-              className="gradient-primary text-white rounded-full px-8 py-6 text-lg font-semibold button-modern hover-glow group"
-            >
-              Comenzar Gratis
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button
+                size="lg"
+                className="gradient-primary text-white rounded-full px-8 py-6 text-lg font-semibold button-modern hover-glow group pulse-glow"
+              >
+                Comenzar Gratis
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform icon-hover" />
+              </Button>
+            </motion.div>
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 py-6 text-lg font-semibold glass border-primary/20 hover:bg-primary/10 group"
-            >
-              <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-              Ver Demo
-            </Button>
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-full px-8 py-6 text-lg font-semibold glass border-primary/20 hover:bg-primary/10 group hover-lift"
+              >
+                <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform icon-hover" />
+                Ver Demo
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -149,52 +154,66 @@ export function HeroSection() {
         >
           <div className="relative">
             {/* Main Chat Interface Preview */}
-            <div className="glass-card gradient-border overflow-hidden shadow-2xl">
+            <div className="glass-card gradient-border overflow-hidden shadow-2xl hover-lift card-hover">
               <div className="bg-background/50 p-6">
                 {/* Chat Header */}
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-3">
-                    <div className="gradient-primary p-2 rounded-full">
+                    <motion.div
+                      className="gradient-primary p-2 rounded-full"
+                      whileHover={{ scale: 1.1, rotate: 10 }}
+                    >
                       <Bot className="w-6 h-6 text-white" />
-                    </div>
+                    </motion.div>
                     <div>
-                      <h3 className="font-semibold">Aira Assistant</h3>
+                      <h3 className="font-semibold hover:text-primary transition-colors cursor-pointer">Aira Assistant</h3>
                       <p className="text-sm text-muted-foreground">En línea</p>
                     </div>
                   </div>
                   <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                    <div className="w-3 h-3 bg-red-500 rounded-full" />
+                    <motion.div
+                      className="w-3 h-3 bg-green-500 rounded-full animate-pulse"
+                      whileHover={{ scale: 1.2 }}
+                    />
+                    <motion.div
+                      className="w-3 h-3 bg-yellow-500 rounded-full"
+                      whileHover={{ scale: 1.2 }}
+                    />
+                    <motion.div
+                      className="w-3 h-3 bg-red-500 rounded-full"
+                      whileHover={{ scale: 1.2 }}
+                    />
                   </div>
                 </div>
 
                 {/* Chat Messages */}
                 <div className="space-y-4">
                   <motion.div
-                    className="flex items-start space-x-3"
+                    className="flex items-start space-x-3 group"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.5 }}
+                    whileHover={{ scale: 1.02 }}
                   >
-                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center hover-lift">
                       <span className="text-sm font-medium">Tú</span>
                     </div>
-                    <div className="glass px-4 py-2 rounded-2xl rounded-tl-sm max-w-xs">
+                    <div className="glass px-4 py-2 rounded-2xl rounded-tl-sm max-w-xs hover:bg-accent/20 transition-colors">
                       <p className="text-sm">¿Puedes ayudarme a crear una presentación?</p>
                     </div>
                   </motion.div>
 
                   <motion.div
-                    className="flex items-start space-x-3"
+                    className="flex items-start space-x-3 group"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 2 }}
+                    whileHover={{ scale: 1.02 }}
                   >
-                    <div className="gradient-primary p-1 rounded-full">
+                    <div className="gradient-primary p-1 rounded-full hover-lift">
                       <Bot className="w-6 h-6 text-white" />
                     </div>
-                    <div className="glass px-4 py-2 rounded-2xl rounded-tl-sm max-w-sm">
+                    <div className="glass px-4 py-2 rounded-2xl rounded-tl-sm max-w-sm hover:bg-primary/10 transition-colors">
                       <p className="text-sm">
                         ¡Por supuesto! Te ayudo a crear una presentación impactante.
                         ¿Sobre qué tema necesitas que sea?
@@ -209,9 +228,18 @@ export function HeroSection() {
                     transition={{ delay: 2.5 }}
                   >
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-primary rounded-full animate-bounce" />
-                      <div className="w-2 h-2 bg-primary rounded-full animate-bounce delay-100" />
-                      <div className="w-2 h-2 bg-primary rounded-full animate-bounce delay-200" />
+                      <motion.div
+                        className="w-2 h-2 bg-primary rounded-full animate-bounce"
+                        whileHover={{ scale: 1.5 }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-primary rounded-full animate-bounce delay-100"
+                        whileHover={{ scale: 1.5 }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-primary rounded-full animate-bounce delay-200"
+                        whileHover={{ scale: 1.5 }}
+                      />
                     </div>
                     <span className="text-sm text-muted-foreground">Aira está escribiendo...</span>
                   </motion.div>
@@ -221,23 +249,25 @@ export function HeroSection() {
 
             {/* Floating Action Cards */}
             <motion.div
-              className="absolute -top-6 -left-6 glass-card p-4 shadow-glow hidden lg:block"
+              className="absolute -top-6 -left-6 glass-card p-4 shadow-glow hidden lg:block hover-lift card-hover cursor-pointer"
               animate={{ y: [-5, 5, -5] }}
-              transition={{ duration: 4, repeat: Infinity }}
+              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+              whileHover={{ scale: 1.05, rotate: 2 }}
             >
               <div className="flex items-center space-x-2">
-                <Star className="w-5 h-5 text-yellow-500" />
+                <Star className="w-5 h-5 text-yellow-500 icon-hover" />
                 <span className="text-sm font-medium">4.9/5 Rating</span>
               </div>
             </motion.div>
 
             <motion.div
-              className="absolute -bottom-6 -right-6 glass-card p-4 shadow-glow hidden lg:block"
+              className="absolute -bottom-6 -right-6 glass-card p-4 shadow-glow hidden lg:block hover-lift card-hover cursor-pointer"
               animate={{ y: [5, -5, 5] }}
-              transition={{ duration: 3, repeat: Infinity }}
+              transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+              whileHover={{ scale: 1.05, rotate: -2 }}
             >
               <div className="flex items-center space-x-2">
-                <Zap className="w-5 h-5 text-primary" />
+                <Zap className="w-5 h-5 text-primary icon-hover" />
                 <span className="text-sm font-medium">Respuesta instantánea</span>
               </div>
             </motion.div>
@@ -247,20 +277,22 @@ export function HeroSection() {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
       >
         <motion.div
-          className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center hover:border-primary/60 transition-colors"
           animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
         >
           <motion.div
             className="w-1 h-3 bg-primary rounded-full mt-2"
             animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           />
         </motion.div>
       </motion.div>

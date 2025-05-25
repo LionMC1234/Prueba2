@@ -24,6 +24,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { toast } from "sonner";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const loginSchema = z.object({
   email: z.string().email("Email inválido"),
@@ -58,6 +60,7 @@ const features = [
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -70,17 +73,29 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginForm) => {
     setIsSubmitting(true);
 
-    // Simulate login
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const result = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
 
-    console.log("Datos de login:", data);
-    toast.success("¡Bienvenido de vuelta! Redirigiendo al dashboard...");
-    setIsSubmitting(false);
+      if (result?.error) {
+        toast.error("Credenciales inválidas. Por favor, verifica tu email y contraseña.");
+      } else if (result?.ok) {
+        toast.success("¡Bienvenido de vuelta! Redirigiendo al dashboard...");
 
-    // Redirect to dashboard
-    setTimeout(() => {
-      window.location.href = "/dashboard";
-    }, 1000);
+        // Redirect to dashboard
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 1000);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Error al iniciar sesión. Por favor, inténtalo de nuevo.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -215,6 +230,7 @@ export default function LoginPage() {
                       type="button"
                       variant="outline"
                       className="rounded-full"
+                      onClick={() => signIn("google")}
                     >
                       <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -228,6 +244,7 @@ export default function LoginPage() {
                       type="button"
                       variant="outline"
                       className="rounded-full"
+                      onClick={() => signIn("facebook")}
                     >
                       <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
