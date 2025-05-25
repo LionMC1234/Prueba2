@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModernNavbar } from "@/components/modern-navbar";
+import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import ClientBody from "./ClientBody";
+import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,13 +38,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -49,9 +52,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModernNavbar />
-          {children}
-          <Toaster />
+          <ClientBody>
+            <ModernNavbar />
+            {children}
+            <Footer />
+            <Toaster />
+          </ClientBody>
         </ThemeProvider>
       </body>
     </html>

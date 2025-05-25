@@ -55,13 +55,6 @@ const features = [
   },
 ];
 
-const stats = [
-  { value: "10k+", label: "Usuarios Activos" },
-  { value: "1M+", label: "Conversaciones" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "4.9★", label: "Rating" },
-];
-
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
@@ -266,29 +259,6 @@ export default function LoginPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {/* Stats */}
-              <Card className="glass-card p-6 border-0 shadow-modern-lg">
-                <h3 className="text-lg font-bold mb-4 text-center">
-                  Únete a miles de usuarios satisfechos
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {stats.map((stat, index) => (
-                    <motion.div
-                      key={stat.label}
-                      className="text-center"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                    >
-                      <div className="text-2xl font-bold gradient-text mb-1">
-                        {stat.value}
-                      </div>
-                      <div className="text-xs text-muted-foreground">{stat.label}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </Card>
-
               {/* Features */}
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold mb-6">
@@ -300,7 +270,7 @@ export default function LoginPage() {
                     className="glass-card p-4 rounded-xl border-0 shadow-modern hover-lift group cursor-pointer"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   >
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-r from-primary/10 to-primary/20 rounded-xl flex items-center justify-center group-hover:shadow-glow transition-all duration-300">

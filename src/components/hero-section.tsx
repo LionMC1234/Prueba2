@@ -22,13 +22,6 @@ const floatingElements = [
   { icon: Bot, delay: 1.5, x: "85%", y: "65%" },
 ];
 
-const stats = [
-  { value: "10k+", label: "Usuarios Activos" },
-  { value: "1M+", label: "Conversaciones" },
-  { value: "99.9%", label: "Uptime" },
-  { value: "4.9★", label: "Rating" },
-];
-
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -90,22 +83,6 @@ export function HeroSection() {
       {/* Main Content */}
       <div className="container-custom relative z-10">
         <div className="text-center max-w-5xl mx-auto">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6"
-          >
-            <Badge
-              variant="secondary"
-              className="glass px-6 py-2 text-sm font-medium rounded-full border-primary/20"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              🚀 Nuevo: Aira 2.0 ya disponible
-            </Badge>
-          </motion.div>
-
           {/* Main Heading */}
           <motion.h1
             className="text-6xl md:text-8xl font-bold mb-6 text-balance leading-tight"
@@ -161,28 +138,6 @@ export function HeroSection() {
               Ver Demo
             </Button>
           </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                className="text-center"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
 
         {/* Hero Visual */}
@@ -190,7 +145,7 @@ export function HeroSection() {
           className="mt-20 relative max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9 }}
+          transition={{ duration: 1, delay: 0.7 }}
         >
           <div className="relative">
             {/* Main Chat Interface Preview */}

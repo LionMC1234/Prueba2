@@ -1,20 +1,25 @@
-# Aira Chatbot Modernization - Todos
+# Tareas para mejorar la página web
 
-## En Progreso
-- [ ] in_progress: Crear páginas adicionales (About, Contact, Blog)
+## En progreso
+- [x] Analizar el código actual y estructura del proyecto
+- [x] Crear páginas adicionales (About, Contact, Blog)
 
 ## Pendientes
+- [x] Mejorar el diseño general de la aplicación
+- [x] Cambiar la paleta de colores
+- [x] Remover usuarios activos, conversaciones y calificaciones del hero section
+- [x] Mejorar el diseño de la página de registro
+- [x] Hacer que el registro automáticamente asigne membresía básica (no selección manual)
+- [x] Ocultar la dirección IP en el formulario de registro (pero mantener funcionalidad)
+- [x] Mejorar el diseño de la página de login
+- [x] Perfeccionar y modernizar toda la interfaz
+- [x] Reorganizar navegación (mover Empresa a Producto, quitar Chat Demo e Integraciones)
+- [x] Quitar "Aira 2.0" del hero section
+- [x] Rediseñar página de precios completamente
+- [x] Crear footer moderno para toda la web
+- [ ] Probar y verificar funcionamiento
+- [ ] Hacer testing de la aplicación
 - [ ] Mejorar sistema de autenticación con diseño moderno
-- [ ] Crear dashboard interactivo
-- [ ] Implementar chat interface avanzado
-- [ ] Crear sistema de testimonios
-- [ ] Implementar FAQ accordion
-- [ ] Añadir efectos de parallax sutiles
-- [ ] Crear página de blog con artículos
-- [ ] Optimizar responsive design
-- [ ] Añadir footer moderno
-- [ ] Crear página de contacto
-- [ ] Añadir página "About Us"
 
 ## Completados
 - [x] Configurar proyecto base Next.js con shadcn/ui

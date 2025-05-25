@@ -147,7 +147,7 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-background to-accent/5">
+      <section className="py-20 bg-gradient-to-br from-background via-accent/5 to-background">
         <div className="container-custom">
           <motion.div
             className="text-center mb-16"
@@ -155,10 +155,6 @@ export default function PricingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge variant="outline" className="mb-4 px-4 py-1 rounded-full">
-              <Zap className="w-4 h-4 mr-2" />
-              Precios Transparentes
-            </Badge>
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Elige el plan perfecto{" "}
               <span className="gradient-text">para tu negocio</span>
@@ -169,26 +165,26 @@ export default function PricingPage() {
 
             {/* Billing Toggle */}
             <div className="flex items-center justify-center space-x-4 mb-12">
-              <span className={`text-sm ${!isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
+              <span className={`text-sm font-medium ${!isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
                 Mensual
               </span>
               <button
                 onClick={() => setIsAnnual(!isAnnual)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+                className={`relative inline-flex h-7 w-12 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                   isAnnual ? 'bg-primary' : 'bg-muted'
                 }`}
               >
                 <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform shadow-lg ${
                     isAnnual ? 'translate-x-6' : 'translate-x-1'
                   }`}
                 />
               </button>
-              <span className={`text-sm ${isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
+              <span className={`text-sm font-medium ${isAnnual ? 'text-foreground' : 'text-muted-foreground'}`}>
                 Anual
               </span>
               {isAnnual && (
-                <Badge variant="secondary" className="ml-2">
+                <Badge className="ml-2 gradient-primary text-white">
                   Ahorra 20%
                 </Badge>
               )}
@@ -198,9 +194,9 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="section-padding">
+      <section className="py-20">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
             {plans.map((plan, index) => (
               <motion.div
                 key={plan.name}
@@ -210,62 +206,75 @@ export default function PricingPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="gradient-primary text-white px-4 py-1">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <Badge className="gradient-primary text-white px-4 py-1 rounded-full">
                       <Star className="w-3 h-3 mr-1" />
                       Más Popular
                     </Badge>
                   </div>
                 )}
 
-                <Card className={`h-full p-8 ${plan.popular ? 'glass-card border-primary/20 shadow-glow' : 'glass-card'} hover-lift transition-all duration-300 border-0 shadow-modern-lg`}>
-                  <div className="mb-6">
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${plan.color} shadow-lg mb-4`}>
-                      <plan.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                    <p className="text-muted-foreground text-sm">{plan.description}</p>
-                  </div>
+                <Card className={`h-full p-8 ${plan.popular ? 'glass-card border-primary/30 shadow-glow scale-105' : 'glass-card border-border/50'} hover-lift transition-all duration-300 border-0 shadow-modern-lg relative overflow-hidden`}>
+                  {plan.popular && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+                  )}
 
-                  <div className="mb-6">
-                    <div className="flex items-baseline">
-                      <span className="text-4xl font-bold">
-                        ${isAnnual && plan.price > 0 ? Math.floor(plan.price * 0.8) : plan.price}
-                      </span>
-                      <span className="text-muted-foreground ml-1">
-                        {plan.price === 0 ? plan.period : plan.period}
-                      </span>
+                  <div className="relative z-10">
+                    <div className="mb-6">
+                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${plan.color} shadow-lg mb-4`}>
+                        <plan.icon className="w-8 h-8 text-white" />
+                      </div>
+                      <h3 className="text-3xl font-bold mb-2">{plan.name}</h3>
+                      <p className="text-muted-foreground">{plan.description}</p>
                     </div>
-                    {isAnnual && plan.price > 0 && (
-                      <p className="text-sm text-muted-foreground">
-                        Facturado anualmente (${plan.price * 12 * 0.8}/año)
-                      </p>
-                    )}
-                  </div>
 
-                  <div className="space-y-3 mb-8">
-                    {plan.features.map((feature, i) => (
-                      <div key={i} className="flex items-center space-x-3">
-                        {feature.included ? (
-                          <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                        ) : (
-                          <X className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                        )}
-                        <span className={`text-sm ${feature.included ? '' : 'text-muted-foreground'}`}>
-                          {feature.name}
+                    <div className="mb-8">
+                      <div className="flex items-baseline mb-2">
+                        <span className="text-5xl font-bold gradient-text">
+                          ${isAnnual && plan.price > 0 ? Math.floor(plan.price * 0.8) : plan.price}
+                        </span>
+                        <span className="text-muted-foreground ml-2 text-lg">
+                          {plan.price === 0 ? "" : plan.period}
                         </span>
                       </div>
-                    ))}
-                  </div>
+                      {plan.price === 0 && (
+                        <p className="text-sm text-muted-foreground">{plan.period}</p>
+                      )}
+                      {isAnnual && plan.price > 0 && (
+                        <p className="text-sm text-muted-foreground">
+                          Facturado anualmente (${Math.floor(plan.price * 12 * 0.8)}/año)
+                        </p>
+                      )}
+                    </div>
 
-                  <Button
-                    className={`w-full ${plan.popular ? 'gradient-primary text-white button-modern hover-glow' : ''} ${plan.ctaVariant === 'outline' ? 'rounded-full' : 'rounded-full'}`}
-                    variant={plan.ctaVariant}
-                    size="lg"
-                  >
-                    {plan.cta}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                    <div className="space-y-4 mb-8">
+                      {plan.features.map((feature, i) => (
+                        <div key={i} className="flex items-center space-x-3">
+                          {feature.included ? (
+                            <div className="w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0">
+                              <Check className="w-3 h-3 text-green-600 dark:text-green-400" />
+                            </div>
+                          ) : (
+                            <div className="w-5 h-5 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
+                              <X className="w-3 h-3 text-muted-foreground" />
+                            </div>
+                          )}
+                          <span className={`${feature.included ? 'text-foreground' : 'text-muted-foreground'}`}>
+                            {feature.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Button
+                      className={`w-full ${plan.popular ? 'gradient-primary text-white button-modern hover-glow' : 'border-primary/20 hover:bg-primary/5'} rounded-full py-6 text-lg font-semibold`}
+                      variant={plan.popular ? "default" : "outline"}
+                      size="lg"
+                    >
+                      {plan.cta}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </div>
                 </Card>
               </motion.div>
             ))}

@@ -42,23 +42,6 @@ const navigationItems = [
         description: "Descubre todas las capacidades de Aira",
       },
       {
-        title: "Chat Demo",
-        href: "/demo",
-        description: "Prueba Aira en acción",
-      },
-      {
-        title: "Integraciones",
-        href: "/integrations",
-        description: "Conecta Aira con tus herramientas",
-      },
-    ],
-  },
-  {
-    title: "Empresa",
-    href: "/about",
-    icon: Users,
-    items: [
-      {
         title: "Sobre Nosotros",
         href: "/about",
         description: "Conoce nuestro equipo y misión",
