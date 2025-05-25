@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ClientBody from "./ClientBody";
-import { ThemeProvider } from "@/providers/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ModernNavbar } from "@/components/modern-navbar";
 import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
@@ -16,8 +16,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portal Modelo de Lenguaje",
-  description: "Plataforma moderna para un modelo de lenguaje avanzado",
+  title: "Aira - Chatbot Inteligente | IA Conversacional Avanzada",
+  description:
+    "Experimenta el poder de la inteligencia artificial con Aira, el chatbot más avanzado que transforma cada conversación en una experiencia extraordinaria.",
+  keywords: ["chatbot", "inteligencia artificial", "IA", "conversacional", "automatización"],
+  authors: [{ name: "Aira Team" }],
+  openGraph: {
+    title: "Aira - Chatbot Inteligente",
+    description: "El futuro de la conversación inteligente está aquí",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aira - Chatbot Inteligente",
+    description: "El futuro de la conversación inteligente está aquí",
+  },
 };
 
 export default function RootLayout({
@@ -26,10 +39,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
-      <body className="antialiased min-h-screen">
-        <ThemeProvider>
-          <ClientBody>{children}</ClientBody>
+    <html lang="es" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ModernNavbar />
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>

@@ -7,21 +7,11 @@ export default function ClientBody({
 }: {
   children: React.ReactNode;
 }) {
-  // Mantener clases importantes durante la hidratación
+  // Remove any extension-added classes during hydration
   useEffect(() => {
-    // Esto se ejecuta solo en el cliente después de la hidratación
-    const htmlClasses = document.documentElement.className;
-    // Preservar clases de tema (dark/light) y de fuentes
-    const preservedClasses = htmlClasses
-      .split(" ")
-      .filter(
-        (cls) =>
-          cls.includes("--font-") || cls === "dark" || cls === "light"
-      )
-      .join(" ");
-
-    document.body.className = `antialiased ${preservedClasses}`;
+    // This runs only on the client after hydration
+    document.body.className = "antialiased";
   }, []);
 
-  return <>{children}</>;
+  return <div className="antialiased">{children}</div>;
 }
